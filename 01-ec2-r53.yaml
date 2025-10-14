@@ -6,14 +6,16 @@
    sg_id: "sg-060e8be463ae9c0d2"
    zone_id: "Z05166562P910VXJWOR8Y"
    domain_name: "karela.fun"
-  #  instances:
-  #   - frontend
-  # we can pass instances through command line using -e
-    # instances: 
-    # - mongodb
-    # - redis
-    # - mysql
-    # - rabbitmq
+   instances:
+   - mongodb
+   - redis
+   - payment
+   - shippment
+   - rabbitmq
+   - mysql
+   - user
+   - cart
+  
   tasks:
   - name: create ec2 instance
     amazon.aws.ec2_instance:
