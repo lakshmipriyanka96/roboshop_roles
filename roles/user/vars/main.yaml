@@ -1,2 +1,2 @@
 MONGODB_HOST: mongodb.karela.fun
-REDISDB_HOST: mongodb.karela.fun
+REDISDB_HOST: redis.karela.fun
