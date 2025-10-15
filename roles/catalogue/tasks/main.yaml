@@ -7,7 +7,7 @@
   ansible.builtin.import_role:
     name: common
     tasks_from: nodejs.yaml
-    
+
 - name: copy mongo repo
   ansible.builtin.copy:
       src: mongo.repo
@@ -19,7 +19,7 @@
       state: present
 
 - name: connnect to mongodb catalogue
-  ansible.builtin.command: mongosh MONGODB_HOST --quiet --eval "db.getMongo().getDBNames().indexOf('catalogue')"
+  ansible.builtin.command: mongosh {{ MONGODB_HOST }} --quiet --eval "db.getMongo().getDBNames().indexOf('catalogue')"
   register: catalogue_output
 
   # - name: evaluate cataalogue database
@@ -33,5 +33,5 @@
   #     msg: "{{ catalogue_output }}"
 
 - name: load products into mongodb
-  ansible.builtin.shell: mongosh --host MONGODB_HOST </app/db/master-data.js
+  ansible.builtin.shell: mongosh --host {{ MONGODB_HOST }} </app/db/master-data.js
   when: catalogue_output.stdout | int < 0

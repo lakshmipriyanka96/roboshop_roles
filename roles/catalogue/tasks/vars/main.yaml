@@ -1,2 +1,1 @@
-[all:vars]
-MONGODB_HOST: mongodb.karela.fun
+MONGODB_HOST:mongodb.karela.fun
