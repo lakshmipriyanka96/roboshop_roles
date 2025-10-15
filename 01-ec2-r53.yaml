@@ -6,16 +6,16 @@
    sg_id: "sg-060e8be463ae9c0d2"
    zone_id: "Z05166562P910VXJWOR8Y"
    domain_name: "karela.fun"
-   instances:
-   - mongodb
-   - redis
-   - payment
-   - shippment
-   - rabbitmq
-   - mysql
-   - user
-   - cart
-   - catalogue
+  #  instances:
+  #  - mongodb
+  #  - redis
+  #  - payment
+  #  - shippment
+  #  - rabbitmq
+  #  - mysql
+  #  - user
+  #  - cart
+  #  - catalogue
   tasks:
   - name: create ec2 instance
     amazon.aws.ec2_instance:
