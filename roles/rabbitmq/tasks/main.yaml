@@ -1,27 +1,26 @@
-- name: disable default redis
-  ansible.builtin.command: dnf module disable redis -y
+- name: copy rabbitmq repo
+  ansible.builtin.copy:
+    src: rabbitmq.repo
+    dest: /etc/yum.repos.d/rabbitmq.repo
 
-- name: enable redis 7
-  ansible.builtin.command: dnf module enable redis:7 -y
-
-- name: install redis
+- name: install rabbitmq server
   ansible.builtin.package:
-     name: redis
-     state: present
-- name: allow remote connections
-  ansible.builtin.replace:
-     path: /etc/redis/redis.conf
-     regexp: '127.0.0.1'
-     replace: '0.0.0.0'
+    name: rabbitmq-server
+    state: present
 
-- name: disable protected module
-  ansible.builtin.lineinfile:
-     path: /etc/redis/redis.conf
-     regexp: 'protected-mode'
-     line: 'protected-mode no'
-
-- name: start and enable redis
+- name: start and enable rabbitmq server
   ansible.builtin.service:
-     name: redis
-     enabled: yes
-     state: started
+    name: rabbitmq-server
+    state: started
+    enabled: yes
+
+- name: create and provide permissions to user
+  community.rabbitmq.rabbitmq_user:
+    user: roboshop
+    password: roboshop123
+    permissions:
+      - vhost: /
+        configure_priv: .*
+        read_priv: .*
+        write_priv: .*
+    state: present
