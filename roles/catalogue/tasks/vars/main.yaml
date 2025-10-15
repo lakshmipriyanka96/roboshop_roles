@@ -1,1 +1,2 @@
+[all:vars]
 MONGODB_HOST: mongodb.karela.fun
