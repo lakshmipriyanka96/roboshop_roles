@@ -7,8 +7,8 @@
   ansible.builtin.import_role:
     name: common
     tasks_from: python.yaml
-    
+
 - name: system setup
   ansible.builtin.import_role:
     name: common
-    tasks_from: systems-setup.yaml
+    tasks_from: system-setup.yaml
