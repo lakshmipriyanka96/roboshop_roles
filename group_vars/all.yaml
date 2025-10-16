@@ -1,0 +1,5 @@
+MONGODB_HOST: mongodb.karela.fun
+REDIS_HOST: redis.karela.fun
+CATALOGUE_HOST: catalogue.karela.fun
+CART_HOST: cart.karela.fun
+MYSQL_HOST: mysql.karela.fun
